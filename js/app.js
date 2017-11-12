@@ -29,17 +29,19 @@ $(document).ready(function() {
     buisInsdrApi
   );
 
-  $(".slider-for").slick({
+  var apis = [
+    "ESPN",
+    "National Geographic",
+    "The Economist",
+    "Next Web",
+    "The Verge",
+    "Business Insider"
+  ];
+
+  $(".slider-nav").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
-    fade: true,
-    asNavFor: ".slider-nav"
-  });
-  $(".slider-nav").slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: ".slider-for",
+    //asNavFor: ".slider-for",
     dots: true,
     focusOnSelect: true
   });
@@ -87,66 +89,31 @@ $(document).ready(function() {
       });
     });
   }
-
+ 
   for (var i = 0; i < apiShortCut.length; i++) {
 
-    var html = '<div data-id="' + i + '"><img class="slider-hw" src=""/><div class="slide__caption">';
+    var html = '<div><img class="slider-hw" src=""/><div class="slide__caption">';
     html += '<div class="headline"><h2></h2></div>';
     html += '<div class="slide__copy"></div>';
     html += '<p><a class="learnMore" href="" target ="_blank">Learn more &#xbb;</a></p>';
     html += "</div></div>";
+    
+    $(".slider-nav").slick('slickAdd', html);
 
-    $(".slider-for").slick("slickAdd", html);
+    (function(i, apiShortCut) {
+      $.ajax({
+        type: "get",
+        url: apiShortCut[i],
+        success: function(results) {
+          (function(i) {
+            var $div = $('div[data-slick-index=' + i + ']');
+            $div.children('img').attr('src', results.articles[0].urlToImage);
+          })(i)
+        }
+      })
+    })(i, apiShortCut);
   }
-  $.when(
-    // function() {
-    //   for (var i = 0; i < apiShortCut.length; i++) {
-      
-        
-
-        $.get({
-          //type: "get",
-          url: apiShortCut[0],
-          // success: function(results) {
-          //  console.log(results);
-
-          //   var html = '<div><img class="slider-hw" src="' + results.articles[i].urlToImage + '"/><div class="slide__caption">';
-          //   html += '<div class="headline"><h2>' + results.articles[i].title + '</h2></div>'
-          //   html += '<div class="slide__copy">' + results.articles[i].description + '</div>';
-          //   html += '<p><a class="learnMore" href="' + results.articles[i].url + '" target ="_blank">Learn more &#xbb;</a></p>';
-          //   html += '</div></div>';
-
-          //   var thumbNail = '<div><img class="thumbnail" src="' + results.articles[i].urlToImage + '"/></div>';
-
-          // },
-          // error: function(results) {
-          //   successmessage = "Error";
-          //   $(".response").text(successmessage);
-          // },
-          // load: function(results) {
-          //   successmessage = "Error";
-          //   $(".response").text(successmessage);
-          // }
-        // }).then(function() {
-        //   console.log('hi');
-        // });//.done(function(response) {
-      //     for (var j = 0; j < $(".slick-track").children().length; j++) {
-      //       var slide = $(".slick-track").children()[j];
-      //       var id = $(slide).data('id');
-      //       console.log(response.articles[j].urlToImage);
-      //       if (id == i) {
-      //         $(slide).children("img").attr("src", response.articles[j].urlToImage);
-      //       }
-      //     }
-      //   });
-      // })(i);
-        })
-
-      // $('.slider').slick();
-  ).then(function() {
-    console.log('hi');
-  });
-
+  
   list(".espn", espnApi, "ESPN");
   list(".natGeo", natGeoApi, "National Geographic");
   list(".economist", economistApi, "the Economist");
