@@ -1,22 +1,17 @@
 $(document).ready(function() {
   // Espn
-  var espnApi =
-    "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
+  var espnApi = "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
   // NatGeo
-  var natGeoApi =
-    "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
+  var natGeoApi = "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
   // The economist
-  var economistApi =
-    "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=the-economist&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
+  var economistApi = "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=the-economist&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
   // The Next Web
-  var nextWebApi =
-    "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
+  var nextWebApi = "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
   // The verge
-  var vergeApi =
-    "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=the-verge&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
+  var vergeApi = "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=the-verge&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
   // Business Insider
-  var buisInsdrApi =
-    "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=business-insider&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
+  var buisInsdrApi = "https://accesscontrolalloworiginall.herokuapp.com/https://newsapi.org/v1/articles?source=business-insider&sortBy=top&apiKey=8389e0eb92a54c14a1fb48e362c1b002";
+  
   var list;
   var results = [];
   var apiShortCut = [];
